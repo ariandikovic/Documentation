@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=GND Pin=P1-1
+Change Component DesignItemId : Designator=P1 Old DesignItemId=PAD3 New DesignItemId=PAD1
+Change Component Footprint: Designator=P1 Old Footprint=PAD3 New Footprint=PAD1
+Change Component Comment : Designator=P1 Old Comment=PAD3 New Comment=PAD1
+Added Component: Designator=P6(PAD1)
+Added Pin To Net: NetName=NetP1_1 Pin=P1-1
+Added Pin To Net: NetName=NetP1_1 Pin=U1-30
+Added Net: Name=NetP1_1
+Added Pin To Net: NetName=NetP6_1 Pin=P6-1
+Added Pin To Net: NetName=NetP6_1 Pin=U1-31
+Added Net: Name=NetP6_1

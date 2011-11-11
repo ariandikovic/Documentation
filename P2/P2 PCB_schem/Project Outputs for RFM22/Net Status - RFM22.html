@@ -1,0 +1,405 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-16">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body { 
+			font-family : verdana;
+		}
+		td, th {  
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;	
+		}
+		th { 
+			background-color : #A6CAF0;
+		
+		}
+		th.column1, td.column1 { 
+			text-align: left;
+			width : auto; 
+		}
+		table { 
+			width : 100%; 
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3 {
+			padding-top : 0.1em;
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top
+		}
+		.front_matter_column1 {
+			text-align : right;
+		}
+		.total_column1, .total_column {
+			font-weight : bold;	
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.front_matter_column2 {
+			text-align : center;
+		}
+		.front_matter_column3 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow 
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script></head>
+<body onload="document.getElementById('radio_mil').click()"><img ALT="Altium" src="
+			file://C:\PROGRAM FILES\ALTIUM DESIGNER SUMMER 09\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Net Status Report</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">18.9.2011</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">15:49:18</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///D:\rfm22 footprint\RFM22.PcbDoc" class="file"><acronym title="D:\rfm22 footprint\RFM22.PcbDoc">D:\rfm22 footprint\RFM22.PcbDoc</acronym></a></td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Units</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">
+<form><input type="radio" name="radio_units" id="radio_mm" onclick="changeUnits(this, 'mm')">mm<input type="radio" name="radio_units" id="radio_mil" onclick="changeUnits(this, 'mil')">mils</form>
+</td>
+</tr>
+</table>
+<hr><a name="IDA2C25N"><table>
+<tr>
+<th class="column1">Nets</th>
+<th class="column2">Layer</th>
+<th class="column3">Length</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2497.929mil|Location2.X=2571.559mil|Location1.Y=2287.811mil|Location2.Y=2471.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2497.929mil|Location2.X=2571.559mil|Location1.Y=2287.811mil|Location2.Y=2471.126mil|Absolute=True">GLED</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1976.945mil|Location2.X=4494mil|Location1.Y=2053.008mil|Location2.Y=3968.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1976.945mil|Location2.X=4494mil|Location1.Y=2053.008mil|Location2.Y=3968.528mil|Absolute=True">GND</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2626.472mil|Location2.X=2693.528mil|Location1.Y=2398.165mil|Location2.Y=2993.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2626.472mil|Location2.X=2693.528mil|Location1.Y=2398.165mil|Location2.Y=2993.528mil|Absolute=True">NIRQ</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2497.929mil|Location2.X=2593.528mil|Location1.Y=2728.874mil|Location2.Y=2993.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2497.929mil|Location2.X=2593.528mil|Location1.Y=2728.874mil|Location2.Y=2993.528mil|Absolute=True">NSEL</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2358.165mil|Location2.X=4374.433mil|Location1.Y=2506.433mil|Location2.Y=3923.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2358.165mil|Location2.X=4374.433mil|Location1.Y=2506.433mil|Location2.Y=3923.528mil|Absolute=True">NetC1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2126.472mil|Location2.X=2648.055mil|Location1.Y=3026.472mil|Location2.Y=3968.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2126.472mil|Location2.X=2648.055mil|Location1.Y=3026.472mil|Location2.Y=3968.528mil|Absolute=True">NetC2_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2688.874mil|Location2.X=3016.126mil|Location1.Y=2586.472mil|Location2.Y=2693.567mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2688.874mil|Location2.X=3016.126mil|Location1.Y=2586.472mil|Location2.Y=2693.567mil|Absolute=True">NetC3_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2688.874mil|Location2.X=3016.126mil|Location1.Y=2695.41mil|Location2.Y=2773.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2688.874mil|Location2.X=3016.126mil|Location1.Y=2695.41mil|Location2.Y=2773.528mil|Absolute=True">NetC4_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2266.472mil|Location2.X=2431.126mil|Location1.Y=2583.874mil|Location2.Y=2643.055mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2266.472mil|Location2.X=2431.126mil|Location1.Y=2583.874mil|Location2.Y=2643.055mil|Absolute=True">NetC5_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2083.874mil|Location2.X=2431.126mil|Location1.Y=2375.37mil|Location2.Y=2693.567mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2083.874mil|Location2.X=2431.126mil|Location1.Y=2375.37mil|Location2.Y=2693.567mil|Absolute=True">NetC6_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2426.472mil|Location2.X=2493.528mil|Location1.Y=2127.811mil|Location2.Y=2343.055mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2426.472mil|Location2.X=2493.528mil|Location1.Y=2127.811mil|Location2.Y=2343.055mil|Absolute=True">NetD1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2506.472mil|Location2.X=2573.528mil|Location1.Y=2127.811mil|Location2.Y=2272.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2506.472mil|Location2.X=2573.528mil|Location1.Y=2127.811mil|Location2.Y=2272.189mil|Absolute=True">NetD2_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2692.89mil|Location2.X=2988.37mil|Location1.Y=3671.63mil|Location2.Y=3868.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2692.89mil|Location2.X=2988.37mil|Location1.Y=3671.63mil|Location2.Y=3868.528mil|Absolute=True">NetJ1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2220.449mil|Location2.X=2293.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2220.449mil|Location2.X=2293.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True">NetM1_10</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2299.189mil|Location2.X=2393.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2299.189mil|Location2.X=2393.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True">NetM1_11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2377.929mil|Location2.X=2493.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2377.929mil|Location2.X=2493.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True">NetM1_12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2456.669mil|Location2.X=2593.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2456.669mil|Location2.X=2593.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True">NetM1_13</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2535.41mil|Location2.X=2693.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2535.41mil|Location2.X=2693.528mil|Location1.Y=3026.472mil|Location2.Y=3214.984mil|Absolute=True">NetM1_14</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2220.449mil|Location2.X=2594.59mil|Location1.Y=3801.472mil|Location2.Y=3868.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2220.449mil|Location2.X=2594.59mil|Location1.Y=3801.472mil|Location2.Y=3868.528mil|Absolute=True">NetM1_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2299.189mil|Location2.X=2515.85mil|Location1.Y=3801.472mil|Location2.Y=3868.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2299.189mil|Location2.X=2515.85mil|Location1.Y=3801.472mil|Location2.Y=3868.528mil|Absolute=True">NetM1_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2623.913mil|Location2.X=4193.528mil|Location1.Y=2398.165mil|Location2.Y=3133.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2623.913mil|Location2.X=4193.528mil|Location1.Y=2398.165mil|Location2.Y=3133.528mil|Absolute=True">NetP1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2592.417mil|Location2.X=4193.528mil|Location1.Y=2398.165mil|Location2.Y=3233.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2592.417mil|Location2.X=4193.528mil|Location1.Y=2398.165mil|Location2.Y=3233.528mil|Absolute=True">NetP1_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2358.165mil|Location2.X=4374.433mil|Location1.Y=2474.937mil|Location2.Y=3920.614mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2358.165mil|Location2.X=4374.433mil|Location1.Y=2474.937mil|Location2.Y=3920.614mil|Absolute=True">NetR1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2348.441mil|Location2.X=2464.59mil|Location1.Y=2287.811mil|Location2.Y=2471.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2348.441mil|Location2.X=2464.59mil|Location1.Y=2287.811mil|Location2.Y=2471.126mil|Absolute=True">NetR3_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2688.874mil|Location2.X=3784mil|Location1.Y=2474.937mil|Location2.Y=3574mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2688.874mil|Location2.X=3784mil|Location1.Y=2474.937mil|Location2.Y=3574mil|Absolute=True">NetS2_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.921mil|Location2.X=2868.528mil|Location1.Y=2728.874mil|Location2.Y=3438.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2560.921mil|Location2.X=2868.528mil|Location1.Y=2728.874mil|Location2.Y=3438.528mil|Absolute=True">PB0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2655.41mil|Location2.X=2868.528mil|Location1.Y=2728.874mil|Location2.Y=3138.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2655.41mil|Location2.X=2868.528mil|Location1.Y=2728.874mil|Location2.Y=3138.528mil|Absolute=True">PD5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2623.913mil|Location2.X=2868.528mil|Location1.Y=2728.874mil|Location2.Y=3238.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2623.913mil|Location2.X=2868.528mil|Location1.Y=2728.874mil|Location2.Y=3238.528mil|Absolute=True">PD6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2592.417mil|Location2.X=2868.528mil|Location1.Y=2728.874mil|Location2.Y=3338.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2592.417mil|Location2.X=2868.528mil|Location1.Y=2728.874mil|Location2.Y=3338.528mil|Absolute=True">PD7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2428.441mil|Location2.X=2496.086mil|Location1.Y=2157.401mil|Location2.Y=2471.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2428.441mil|Location2.X=2496.086mil|Location1.Y=2157.401mil|Location2.Y=2471.126mil|Absolute=True">RLED</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.473mil|Location2.X=4494mil|Location1.Y=2287.811mil|Location2.Y=3574mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.473mil|Location2.X=4494mil|Location1.Y=2287.811mil|Location2.Y=3574mil|Absolute=True">RST</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.473mil|Location2.X=2493.528mil|Location1.Y=2666.472mil|Location2.Y=2993.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.473mil|Location2.X=2493.528mil|Location1.Y=2666.472mil|Location2.Y=2993.528mil|Absolute=True">SCK</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2146.472mil|Location2.X=2496.086mil|Location1.Y=2666.472mil|Location2.Y=2993.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2146.472mil|Location2.X=2496.086mil|Location1.Y=2666.472mil|Location2.Y=2993.528mil|Absolute=True">SDI</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.473mil|Location2.X=2464.59mil|Location1.Y=2728.874mil|Location2.Y=2993.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2046.473mil|Location2.X=2464.59mil|Location1.Y=2728.874mil|Location2.Y=2993.528mil|Absolute=True">SDO</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2146.472mil|Location2.X=2927.622mil|Location1.Y=2125.055mil|Location2.Y=2833.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2146.472mil|Location2.X=2927.622mil|Location1.Y=2125.055mil|Location2.Y=2833.528mil|Absolute=True">V+</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2126.472mil|Location2.X=3103.055mil|Location1.Y=2056.945mil|Location2.Y=2993.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\rfm22 footprint\RFM22.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2126.472mil|Location2.X=3103.055mil|Location1.Y=2056.945mil|Location2.Y=2993.528mil|Absolute=True">VCC</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

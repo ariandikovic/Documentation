@@ -1,0 +1,5 @@
+Change Component Designator: OldDesignator=J2 NewDesignator=J3
+Added Component: Designator=J2(SMD jmp 2)
+Added Pin To Net: NetName=NetC1_2 Pin=J2-1
+Added Pin To Net: NetName=VCC Pin=J2-2
+Added Member To Class: ClassName=RFM22 Member=Component J3 SMD jumper

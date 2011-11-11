@@ -1,0 +1,20 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~RFM22.PrjPcb|ReportField=ProjectFullPath~C:\rfm22 footprint\RFM22.PrjPcb|ReportField=Title~Bill of Materials For Project [RFM22.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~34|ReportField=ReportTime~14:59:59|ReportField=ReportDate~10.11.2011|ReportField=ReportDateTime~10.11.2011 14:59:59|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~10.11.2011|ReportField=CurrentTime~14:59:55|ReportField=Date~|ReportField=DocumentFullPathAndName~C:\rfm22 footprint\RFM22.SchDoc|ReportField=DocumentName~RFM22.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~19.9.2011|ReportField=Organization~|ReportField=ProjectName~|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~RFM22.PrjPcb|ReportField=DataSourceFullPath~C:\rfm22 footprint\RFM22.PrjPcb
+10 nF|Capacitor|C1|C0805|Cap|1
+0.1 uF|Capacitor|C2, C5, C6, C7|C0805|Cap|4
+22 pF|Capacitor|C3, C4|C0805|Cap|2
+10 uF|Capacitor|C8, C9|C0805|Cap|2
+LED_SMD|Typical SMD LED|D1, D2|LED-0805|LED_SMD|2
+919-119J-51AX|MCX RF Coaxial PCB Connector, Thru-Hole, Right-Angle Mount Socket, Blunt Post Terminal, 50 Ohm Impedance|J1|919-119J|919-119J-51AX|1
+SMD jumper|SMD jumper|J2|SMD jmp 2|SMD jumper|1
+10 mH|Inductor|L1|1812|Inductor|1
+RFM22||M1|RFM22_S2|RFM22|1
+Header 6X2|Header, 6-Pin, Dual row|P1|HDR2X6|Header 6X2|1
+PAD1|PAD connection|P2, P3|PAD1|PAD1|2
+PAD_PWR|PAD connection|P4, P6|PAD_PWR|PAD_PWR|2
+Header 3X2|Header, 3-Pin, Dual row|P5|HDR2X3|Header 3X2|1
+10 K|Resistor|R1, R2, R3, R4, R5, R6, R7|R0805|Res1|7
+NTC 10K|Thermistor|RT1|R1206|Res Thermal|1
+SW-PB|Switch|S1, S2|SW_ts017a|SW-PB|2
+SW DIP-4|DIP Switch, 4 Position, SPST|S3|DIP-8|SW DIP-4|1
+ATmega8L-8AC|8-Bit AVR Microcontroller with 8K Bytes of In-System Programmable Flash Memory|U1|32A_N|ATmega8L-8AC|1
+XTAL|Crystal Oscillator|Y1|X32768_normal|XTAL|1

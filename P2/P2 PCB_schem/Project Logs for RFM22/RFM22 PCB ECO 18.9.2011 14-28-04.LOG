@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=V+ Pin=J2-1
+Change Component Footprint: Designator=C3 Old Footprint=C1206 New Footprint=C0805
+Change Component Footprint: Designator=C4 Old Footprint=C1206 New Footprint=C0805
+Added Pin To Net: NetName=NetC1_2 Pin=J2-1
+Added Pin To Net: NetName=V+ Pin=J2-1
+Added Pin To Net: NetName=VCC Pin=J2-2

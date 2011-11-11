@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=VCC Pin=P2-1
+Removed Pin From Net: NetName=V+ Pin=R3-2
+Removed Pin From Net: NetName=RLED Pin=R5-1
+Removed Pin From Net: NetName=NetD1_1 Pin=R5-2
+Removed Pin From Net: NetName=NetR1_2 Pin=U1-24
+Change Component Footprint: Designator=P2 Old Footprint=PAD_PWR New Footprint=PAD1
+Change Component Comment : Designator=R3 Old Comment=1 K New Comment=10 K
+Change Component Comment : Designator=P2 Old Comment=PAD_PWR New Comment=PAD1
+Change Component Designator: OldDesignator=P3 NewDesignator=P5
+Change Component Designator: OldDesignator=P4 NewDesignator=P6
+Change Component Designator: OldDesignator=P5 NewDesignator=P1
+Change Component Designator: OldDesignator=P6 NewDesignator=P3
+Change Component Designator: OldDesignator=R3 NewDesignator=R4
+Change Component Designator: OldDesignator=R4 NewDesignator=R3
+Change Component Designator: OldDesignator=R6 NewDesignator=R7
+Added Component: Designator=P4(PAD_PWR)
+Added Component: Designator=R6(R0805)
+Added Pin To Net: NetName=VCC Pin=P4-1
+Added Pin To Net: NetName=GND Pin=R5-1
+Added Pin To Net: NetName=RLED Pin=R6-1
+Added Pin To Net: NetName=NetD1_1 Pin=R6-2
+Added Pin To Net: NetName=NetR1_2 Pin=U1-22
+Change Net Name : Old Net Name=NetP6_1 New Net Name=NetP3_1
+Added Pin To Net: NetName=NetP2_1 Pin=P2-1
+Added Pin To Net: NetName=NetP2_1 Pin=U1-30
+Added Net: Name=NetP2_1
+Added Pin To Net: NetName=NetR4_1 Pin=R4-1
+Added Pin To Net: NetName=NetR4_1 Pin=R5-2
+Added Pin To Net: NetName=NetR4_1 Pin=U1-25
+Added Net: Name=NetR4_1
+Added Pin To Net: NetName=NetR4_2 Pin=R4-2
+Added Pin To Net: NetName=NetR4_2 Pin=U1-24
+Added Net: Name=NetR4_2
